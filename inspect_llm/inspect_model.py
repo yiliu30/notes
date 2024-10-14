@@ -40,6 +40,7 @@ with torch.no_grad():
     with LoggingMode():
         torch.set_default_device("cuda:0")
         model_name_or_path = "/models/Llama-2-7b-chat-hf/"
+        # model_name_or_path = "/models/Llama-2-13b-hf/"
 
         # To use a different branch, change revision
         # For example: revision="gptq-4bit-64g-actorder_True"
@@ -95,4 +96,4 @@ with torch.no_grad():
 for stage, shapes in Counter.shape_counter.items():
     print(f"Stage {stage}:")
     for shape, count in shapes.items():
-        print(f"  - {shape}: {count}")
+        print(f"  - input: {shape[0]}, weight: {shape[1]}: {count}")
